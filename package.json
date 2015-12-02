@@ -4,6 +4,7 @@
   "description": "Test helper for Postgres integration tests.",
   "main": "index.js",
   "scripts": {
+    "lint": "onelint",
     "test": "mocha"
   },
   "author": "Gustav Nikolaj Olsen <gno@one.com>",
