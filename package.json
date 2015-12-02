@@ -19,5 +19,13 @@
     "passerror": "1.1.0",
     "pg": "4.4.3",
     "when": "3.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/One-com/node-mocha-docker-postgres.git"
+  },
+  "homepage": "https://github.com/One-com/node-mocha-docker-postgres",
+  "bugs": {
+    "url": "https://github.com/One-com/node-mocha-docker-postgres/issues"
   }
 }
