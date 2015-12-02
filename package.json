@@ -1,0 +1,21 @@
+{
+  "name": "@local/mocha-docker-postgres",
+  "version": "0.0.0",
+  "description": "Test helper for Postgres integration tests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Gustav Nikolaj Olsen <gno@one.com>",
+  "devDependencies": {
+    "mocha": "2.3.3",
+    "unexpected": "10.0.2"
+  },
+  "dependencies": {
+    "async": "1.5.0",
+    "dockerode": "2.2.3",
+    "passerror": "1.1.0",
+    "pg": "4.4.3",
+    "when": "3.7.4"
+  }
+}
