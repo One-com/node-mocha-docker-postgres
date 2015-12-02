@@ -1,5 +1,5 @@
 {
-  "name": "@local/mocha-docker-postgres",
+  "name": "mocha-docker-postgres",
   "version": "0.0.0",
   "description": "Test helper for Postgres integration tests.",
   "main": "index.js",
