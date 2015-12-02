@@ -2,12 +2,13 @@
   "name": "mocha-docker-postgres",
   "version": "0.0.0",
   "description": "Test helper for Postgres integration tests.",
+  "author": "Gustav Nikolaj Olsen @gustavnikolaj <gno@one.com>",
+  "license": "BSD-3-Clause",
   "main": "index.js",
   "scripts": {
     "lint": "onelint",
     "test": "mocha"
   },
-  "author": "Gustav Nikolaj Olsen <gno@one.com>",
   "devDependencies": {
     "mocha": "2.3.3",
     "unexpected": "10.0.2"
