@@ -1,4 +1,7 @@
 # mocha docker postgres
+
+[![Build Status](https://travis-ci.org/One-com/node-mocha-docker-postgres.svg?branch=master)](https://travis-ci.org/One-com/node-mocha-docker-postgres)
+
 mocha testhelper for integration tests with postgres using docker.
 
 ## Usage:
@@ -45,4 +48,3 @@ less time consuming.
 
 On my developer work station it takes about 4 seconds for postgres to start up,
 and that is only done once per test run.
-
