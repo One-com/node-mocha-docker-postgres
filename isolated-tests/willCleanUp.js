@@ -1,3 +1,4 @@
+require('../test/polyfill');
 var expect = require('unexpected');
 require('../');
 var Docker = require('dockerode');
