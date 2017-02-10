@@ -78,12 +78,27 @@ function dockerPostgres(dockerOpts) {
     // set the timeout of the hook long enough for the container to start
     this.timeout(10000);
     return new Promise(function (resolve, reject) {
-        waitForDockerContainerToBeReady(dockerOpts, passError(reject, function () {
-            state.containerReference.getConString(databaseName, passError(reject, function (conString) {
+        if (process.env.GITLAB_CI) {
+            var pgUser = process.env.POSTGRES_USER;
+            var pgPassword = process.env.POSTGRES_PASSWORD;
+            var port = process.env.POSTGRES_PORT_5432_TCP_PORT;
+            var ip = process.env.POSTGRES_PORT_5432_TCP_ADDR;
+
+            PostgresContainer.prototype.getConString.call({
+                conString: 'postgres://' + pgUser + ':' + pgPassword + '@' + ip + ':' + port + '/{database}',
+                pgUser: pgUser
+            }, databaseName, passError(reject, function (conString) {
                 that.conString = conString;
                 resolve();
             }));
-        }));
+        } else {
+            waitForDockerContainerToBeReady(dockerOpts, passError(reject, function () {
+                state.containerReference.getConString(databaseName, passError(reject, function (conString) {
+                    that.conString = conString;
+                    resolve();
+                }));
+            }));
+        }
     });
 }
 
