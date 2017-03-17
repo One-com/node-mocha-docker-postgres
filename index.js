@@ -78,11 +78,17 @@ function dockerPostgres(dockerOpts) {
     // set the timeout of the hook long enough for the container to start
     this.timeout(10000);
     return new Promise(function (resolve, reject) {
-        if (process.env.GITLAB_CI) {
+        if (
+            process.env.POSTGRES_USER ||
+            process.env.POSTGRES_PASSWORD ||
+            process.env.POSTGRES_PORT
+        ) {
             var pgUser = process.env.POSTGRES_USER;
             var pgPassword = process.env.POSTGRES_PASSWORD;
-            var port = process.env.POSTGRES_PORT_5432_TCP_PORT;
-            var ip = process.env.POSTGRES_PORT_5432_TCP_ADDR;
+            var pgPort = process.env.POSTGRES_PORT;
+
+            var ip = pgPort.split(':')[1].substr(2);
+            var port = pgPort.split(':')[2];
 
             PostgresContainer.prototype.getConString.call({
                 conString: 'postgres://' + pgUser + ':' + pgPassword + '@' + ip + ':' + port + '/{database}',

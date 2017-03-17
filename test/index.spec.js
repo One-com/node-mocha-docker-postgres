@@ -8,21 +8,26 @@ describe('dockerPostgres', function () {
         })
     });
 
-    describe('when running on Gitlab CI server', function () {
+    describe('when running on a CI server with a liked Postgres container', function () {
+        var originalValues = {};
+
         before(function () {
-            process.env.GITLAB_CI = 'true';
+            originalValues.CI = process.env.CI;
+            originalValues.POSTGRES_USER = process.env.POSTGRES_USER;
+            originalValues.POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD;
+            originalValues.POSTGRES_PORT = process.env.POSTGRES_PORT;
+
+            process.env.CI = true;
             process.env.POSTGRES_USER = 'foo';
             process.env.POSTGRES_PASSWORD = 'bar';
-            process.env.POSTGRES_PORT_5432_TCP_PORT = 5432;
-            process.env.POSTGRES_PORT_5432_TCP_ADDR = '0.0.0.0';
+            process.env.POSTGRES_PORT = 'tcp://0.0.0.0:5432';
         });
 
         after(function () {
-            delete process.env.GITLAB_CI;
-            delete process.env.POSTGRES_USER;
-            delete process.env.POSTGRES_PASSOWRD;
-            delete process.env.POSTGRES_PORT_5432_TCP_PORT;
-            delete process.env.POSTGRES_PORT_5432_TCP_ADDR;
+            originalValues.CI = process.env.CI;
+            process.env.POSTGRES_USER = originalValues.POSTGRES_USER;
+            process.env.POSTGRES_PASSWORD = originalValues.POSTGRES_PASSWORD;
+            process.env.POSTGRES_PORT = originalValues.POSTGRES_PORT;
         });
 
         it('should set the connection string for the env connection', function () {
