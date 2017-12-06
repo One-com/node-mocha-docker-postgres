@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "onelint",
-    "test": "mocha --timeout 20000"
+    "test": "mocha"
   },
   "devDependencies": {
     "mocha": "2.3.3",
