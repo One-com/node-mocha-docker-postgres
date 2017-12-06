@@ -3,7 +3,7 @@ var PostgresContainer = require('../../lib/PostgresContainer');
 
 describe('PostgresContainer', function () {
     it('should start a postgres container, emit ready when ready, and shutdown', function () {
-        this.timeout(10000);
+        this.timeout(20000);
         return expect(function (cb) {
             var hadError = null;
             var postgresContainer = new PostgresContainer();
@@ -23,7 +23,7 @@ describe('PostgresContainer', function () {
     });
 
     it('should be able to get a database', function () {
-        this.timeout(10000);
+        this.timeout(20000);
         return expect(function (cb) {
             var hadError = null;
             var hadConString = false;
@@ -50,7 +50,7 @@ describe('PostgresContainer', function () {
     });
 
     it('should hand out different databases', function () {
-        this.timeout(10000);
+        this.timeout(20000);
         return expect(function (cb) {
             var hadError = null;
             var conStrings = [];
