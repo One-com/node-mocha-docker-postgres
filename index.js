@@ -75,8 +75,13 @@ function dockerPostgres(dockerOpts) {
     var that = this;
     var databaseName = getDatabaseNameFromTest(this);
 
-    // set the timeout of the hook long enough for the container to start
-    this.timeout(10000);
+    // Bump up the timeout to 10000 if it's not already higher.
+    // The default of 2000 is just low enough that it will not always
+    // allow the container to start
+    if (this.timeout() < 10000) {
+        this.timeout(10000);
+    }
+
     return new Promise(function (resolve, reject) {
         if (
             process.env.POSTGRES_USER ||
