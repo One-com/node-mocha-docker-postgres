@@ -6,6 +6,8 @@ mocha testhelper for integration tests with postgres using docker.
 
 ## Usage:
 
+Ensure Docker is installed and the postgres docker image has been pulled. e.g. ```docker pull postgres```
+
 ```js
 require('mocha-docker-postgres'); // will patch the mocha Context prototype
 
@@ -48,3 +50,10 @@ less time consuming.
 
 On my developer work station it takes about 4 seconds for postgres to start up,
 and that is only done once per test run.
+
+## Running on OSX
+
+On all platforms elevated privileges are required to bind to TCP ports < 1024 and
+to run the docker deamon. On OSX ```brew install docker``` just installs the CLI
+In order to get docker running use ```brew cask install docker```. Then open the
+Docker application and allow privileged execution when prompted.
